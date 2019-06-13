@@ -1,0 +1,22 @@
+
+
+<scroll-view class="page-body">
+  <view class='name'>{{name}}</view>
+  <button class="cbsuccess" bindtap="cbsuccess">回访成功</button>
+  <button class="cbfail" bindtap="cbfail">回访失败</button>
+  <view class='phone'>
+    <block wx:for="{{item.phones}}">
+      <view>
+        <icon> </icon>
+        item 
+        <button></button>
+      </view>
+    </block>
+  </view>
+  <block class="details" wx:for="{{details}}">
+    <view>
+      <view class="title">{{item.title}}</view>
+      <view class="detail">{{item.detail}}</view>
+    </view>
+  </block>
+</scroll-view>

@@ -1,0 +1,20 @@
+<!--pages/details/details.wxml-->
+<scroll-view class="page-body">
+  <view class='progressbar'>progress</view>
+  <view class='littlebar'>
+    <button class='littlebaritem'><view>已回访</view></button>
+    <button class='littlebaritem'><view>未接通</view></button>
+    <button class='littlebaritem'><view>未回访</view></button>
+  </view>
+  <view class="down">
+  <block wx:for="{{items}}">
+    <view>
+      <navigator class="item" url="../message/message?id={{item.id}}">
+        <view class="Name">{{item.name}}</view>
+        <view class="Details">{{item.details1}}</view>
+        <view class="Details">{{item.details2}}</view>
+      </navigator>
+    </view>
+  </block>
+  </view>
+</scroll-view>
