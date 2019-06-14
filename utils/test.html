@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    <script type="text/javascript" src="xlsx.core.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".test").css('height','40');
+            $('#excel-file').change(function(e) {
+                var files = e.target.files;
+                var fileReader = new FileReader();
+                fileReader.onload = function(ev) {
+                    try {
+                        var data = new Uint8Array(ev.target.result);
+                        console.log("1");
+                        var workbook = XLSX.read(data,{type:'array'}); // 以二进制流方式读取得到整份excel表格对象
+                        console.log("2");
+                    } catch (e) {
+                        console.log('文件类型不正确');
+                        return;
+                    }
+                    console.log("fuck?");
+                };
+                fileReader.readAsArrayBuffer(files[0]);
+                // 以二进制方式打开文件
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class='test' style="background-color: #000000;width:50px;height:50px"></div>
+    <input type="file" id="excel-file" class="ef" style="border: 1px solid #FFEEDD;width:400px">
+</body>
+
+</html>
