@@ -2,14 +2,16 @@
 <view class="container">
   <view class="mainshow" data-statu="open">
     <view class='addtask'>
-      <button bindtap='addtaskbutton' class='addtaskclass' >+</button>
+      <button bindtap='powerDrawer' class='addtaskclass' >+</button>
       <block wx:for="{{tasks_doing}}">
         <view>
-        <button bindtap='enterdetail' class='task'>
-          <text>
-            {{item}}
-          </text>
-        </button>
+        <navigator class='itemnavi' url='../xlslist/xlslist?path={{item.path}}'>
+          <button bindtap='enterdetail' class='task'>
+            <text>
+              {{item.title}}
+            </text>
+          </button>
+        </navigator>
         </view>
       </block>
       <button class='task'>
@@ -27,17 +29,29 @@
   <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
  
     <!--drawer content-->
-    <view class="drawer_title">选文件</view>
-    <view class="drawer_content">
-      <view class="top grid">
-        <label class="title col-0">手机栏标题</label>
-        <input class="input_base input_h30 col-1" name="rName" value="可自行定义内容"></input>
+    <view class="drawer_title">项目设置</view>
+    <form bindsubmit='addtaskbutton'>
+      <view class="drawer_content">
+        <view class="modal_setd">
+          <text class="modal_title">{{fileName}}</text>
+          <button class='modal_button' bindtap='uploadfile'>点击上传xls文件</button>
+        </view>
+        <view wx:if="{{rightFileType}}">
+          <view class="modal_setd">
+            <label class="modal_title">电话栏标题:</label>
+            <input class="modal_input" name="phonecolumn" placeholder="例如：电话、Phone等" id='input1'></input>
+          </view>
+          <view class="modal_set">
+            <label class="modal_title">用户名栏标题:</label>
+            <input class="modal_input" name="namecolumn" placeholder="例如：姓名、Name等" id='input2'></input>
+          </view>
+          <view class="modal_set">
+            <label class="modal_title">sheet标题:</label>
+            <input class="modal_input" name="sheetcolumn" placeholder="例如：sheet1等" id='input3'></input>
+          </view>
+        </view>
       </view>
-      <view class="top grid">
-        <label class="title col-0">用户名栏标题</label>
-        <input class="input_base input_h30 col-1" name="mobile" value="110"></input>
-      </view>
-    </view>
-    <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view>
+      <button class="btn_ok" form-type='submit' data-statu="close">确定</button>
+    </form>
   </view>
 </view>

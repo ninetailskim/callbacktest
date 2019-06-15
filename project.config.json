@@ -9,12 +9,13 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
 	"appid": "wxfc58850f2ce97b73",
-	"projectname": "callback",
+	"projectname": "realcallback",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

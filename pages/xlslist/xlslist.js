@@ -1,4 +1,6 @@
 // pages/details/details.js
+
+import * as XXLLSSXX from "../../utils/xlsx.js"
 Page({
 
   /**
@@ -11,8 +13,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function (parames) {
+    var that = this;
+    console.log("onLoad xlslist");
+    console.log(parames);
+    console.log(parames.path);
+    const FSM = wx.getFileSystemManager();
+    FSM.readFile({
+      filePath:parames.path,
+      success:function(res){
+        var data = res.data,
+        workbook = XLSX.read(data, {type:'binary'}),
+        persons = [];
+        var fromTo = '',
+        for(var sheet in workbook.Sheets){
+          if (workbook.Sheets.hasOwnProperty(sheet)) {
+            fromTo = workbook.Sheets[sheet]['!ref'];
+            console.log(fromTo);
+            persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+            break; // 如果只取第一张表，就取消注释这行
+          }
+        }
+        console.log(persons);
+      },
+    });
   },
 
   /**
