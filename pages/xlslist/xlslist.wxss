@@ -1,1 +1,59 @@
 /* pages/details/details.wxss */
+.headTitle{
+  text-align:center;
+  /* border:1px solid #F00; */
+  font-size: 50rpx;
+}
+
+
+.littlebaritem{
+  flex:1;
+   /* background-color:#00FFFF; */
+   margin-top: 10rpx;
+}
+
+.littlebar{
+  display: flex;
+  flex-direction: ros;
+  align-items: center;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+#have{
+  background-color:#00FFFF;
+}
+
+#undo{
+  background-color:#55AAAA;
+}
+
+#fail{
+  background-color:#FF6600ed;
+}
+
+.itemclass{
+  font-size: 30rpx;
+  margin-top: 20rpx ;
+  width: 100%;
+  border:1px solid red;
+}
+
+.Name{
+  font-size: 40rpx;
+  margin-left: 20rpx;
+  margin-top:20rpx;
+}
+
+.Details{
+  font-size:25rpx;
+  line-height: 3rpx;
+  color: #949090;
+  text-overflow:ellipsis;
+  word-wrap:break-word;
+}
+
+.down{
+  margin: 20rpx;
+  width: 95%;
+}

@@ -1,20 +1,23 @@
 <!--pages/details/details.wxml-->
 <scroll-view class="page-body">
-  <view class='progressbar'>progress</view>
+  <view class='headTitle'>
+    <view>
+      {{taskName}}({{havetable.length}}/{{failtable.length}}/{{tabelitem.length}})
+    </view>
+  </view>
   <view class='littlebar'>
-    <button class='littlebaritem'><view>已回访</view></button>
-    <button class='littlebaritem'><view>未接通</view></button>
-    <button class='littlebaritem'><view>未回访</view></button>
+    <button class='littlebaritem' id='have'><view>已回访</view></button>
+    <button class='littlebaritem' id='fail'><view>未接通</view></button>
+    <button class='littlebaritem' id='undo'><view>待处理</view></button>
   </view>
   <view class="down">
-  <block wx:for="{{items}}">
-    <view>
+    <block wx:for="{{tabelitem}}">
       <navigator class="item" url="../message/message?id={{item.id}}">
-        <view class="Name">{{item.name}}</view>
-        <view class="Details">{{item.details1}}</view>
-        <view class="Details">{{item.details2}}</view>
+        <button class='itemclass' bindtap='letcall'>
+          <view class="Name">{{item.name}}</view>
+          <text class="Details">{{item.title}}</text>
+        </button>
       </navigator>
-    </view>
-  </block>
+    </block>
   </view>
 </scroll-view>
